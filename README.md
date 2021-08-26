@@ -1,4 +1,22 @@
 # Exome-seq
+**tools preparation**
+softwares available to conda:
+    conda install sra-tools
+    conda install fastqc
+    conda install fastx_toolkit
+    conda install bwa
+    conda install samtools
+    conda install snpeff
+    conda install bcftools
+    conda install qualimap
+ softwares not available to conda:
+    wget -c -t 0 https://github.com/broadinstitute/gatk/releases/download/4.2.2.0/gatk-4.2.2.0.zip
+    unzip gatk-4.2.2.0.zip
+    cd gatk-4.2.2.0
+    ./gatk
+    echo 'export PATH="/home/students/y.dong/tool/gatk-4.2.2.0/:$PATH"' >> ~/.bashrc
+    source ~/.bashrc
+    
 **step 1: Download SRA files, high-throughput raw sequencing data.**
   method one:using the prefetch function of the SRA-tools.
     E.g:download SRR3589957-SRR3589965(RNAseq of *Homo sapiens* 293 cell line)
