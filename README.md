@@ -1,5 +1,6 @@
 # Exome-seq
 **tools preparation**
+
 softwares available to conda:
     
     conda install sra-tools
