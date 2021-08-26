@@ -6,6 +6,7 @@ softwares available to conda:
     conda install sra-tools
     conda install fastqc
     conda install fastx_toolkit
+    conda install trim-galore
     conda install bwa
     conda install samtools
     conda install snpeff
