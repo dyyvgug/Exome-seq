@@ -25,7 +25,8 @@
 **step 2:Unzip the SRA file and do quality control**
 
     $ bash SRA-QC.sh
-**step 3: Remove adapter and filter low-quality reads
+**step 3: Remove adapter and filter low-quality reads**
+
     
 
 **step 3:Download the genome file and annotation file for the corresponding specie**
