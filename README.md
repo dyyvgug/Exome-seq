@@ -91,7 +91,7 @@ There are many different sequence alignment tools, such as STAR, hisat2, BWA, To
   
   The easiest way to find variants (not precise):
   
-    $ samtools mpileup -ugf /DYY/gatk/hg38/Homo_sapiens_assembly38.fasta \*.bam | bcftools call -vmO z -o var_out.vcf.gz
+    $ samtools mpileup -ugf /DYY/gatk/hg38/Homo_sapiens_assembly38.fasta *.bam | bcftools call -vmO z -o var_out.vcf.gz
     
   The complete way:
   
