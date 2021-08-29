@@ -93,7 +93,7 @@ There are many different sequence alignment tools, such as STAR, hisat2, BWA, To
   
     $ samtools mpileup -ugf /DYY/gatk/hg38/Homo_sapiens_assembly38.fasta *.bam | bcftools call -vmO z -o var_out.vcf.gz
     
-  The complete way:
+  The complete way using GATK. We need to 
   
   
     
