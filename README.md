@@ -95,7 +95,7 @@ There are many different sequence alignment tools, such as STAR, hisat2, BWA, To
     
   The complete way using GATK. Firstly, we need to mark PCR duplicate sequences. If the library is paired-end, we need fix the mate information of the pair-end. Then base quality score recalibration is necessary. 
 
-   $ bash gatk_dup_bqsr.sh
+    $ bash gatk_dup_bqsr.sh
   
   If 
     
