@@ -93,9 +93,11 @@ There are many different sequence alignment tools, such as STAR, hisat2, BWA, To
   
     $ samtools mpileup -ugf /DYY/gatk/hg38/Homo_sapiens_assembly38.fasta *.bam | bcftools call -vmO z -o var_out.vcf.gz
     
-  The complete way using GATK. We need to 
+  The complete way using GATK. Firstly, we need to mark PCR duplicate sequences. If the library is paired-end, we need fix the mate information of the pair-end. Then base quality score recalibration is necessary. 
+
+   $ bash gatk_dup_bqsr.sh
   
-  
+  If 
     
     
 
