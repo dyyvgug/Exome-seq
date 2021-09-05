@@ -1,5 +1,5 @@
 #!/bin/bash
-# author: 
+# author: Yingying Dong. 2021-8-25.
 
 for item in $(ls *.sam)
 do
