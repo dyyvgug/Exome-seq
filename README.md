@@ -87,7 +87,7 @@ There are many different sequence alignment tools, such as STAR, hisat2, BWA, To
     > mirror hg38
     > exit
     $ tree -h
-    $ gunzip *.gz
+    $ gunzip Homo_sapiens_assembly38.fasta.gz
   
   The easiest way to find variants (not precise):
   
