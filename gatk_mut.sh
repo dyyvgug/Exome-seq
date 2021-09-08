@@ -9,7 +9,7 @@ j=0
 until [ ! $i -lt 8 ]
 do
 
-echo "patient $j is ${numbers[$j]} "
+echo "patient $i is ${numbers[$j]} "
 gatk --java-options "-Xmx20G -Djava.io.tmpdir=./" Mutect2 \
 	-R /proj/y.dong/GATK/hg38/Homo_sapiens_assembly38.fasta \
 	-I ${numbers[$j]}_bqsr.bam \
