@@ -3,7 +3,7 @@
 
 softwares available to conda:
     
-    conda install sra-tools fastqc fastx_toolkit trim-galore bwa samtools snpeff bcftools qualimap
+    conda install sra-tools fastqc multiqc fastx_toolkit trim-galore bwa samtools snpeff bcftools qualimap
     
  softwares not available to conda:
  
