@@ -89,11 +89,17 @@ There are many different sequence alignment tools, such as STAR, hisat2, BWA, To
 
     $ bash gatk_dup_bqsr.sh
   
-  If 
+  According to different research purposes, the data set is various. Hence, the analysis method is also different. The application of WES is mainly divided into three parts: 1.analysis mutation genes in complex disease such as cancer, 2. analysis of pathogenic genes in Mendelian single-gene inherited disease, 3. analysis the low-frequence mutations in population.
+ -------------------------------------------------------------------------------------------------------------------------------------------
+  Part 1. analysis mutation genes in complex disease such as cancer
+ -------------------------------------------------------------------------------------------------------------------------------------------   
+  we use GATK Mutect2 to analyze. For detailed instruction of Mutect2 usage and parameters see https://gatk.broadinstitute.org/hc/en-us/articles/360037593851-Mutect2. The script like this:
     
+    $ bash gatk_mut.sh
+
+Then we need filter the false positives:
     
-
-
+    $ bash gatk_filter.sh
 
 
 
