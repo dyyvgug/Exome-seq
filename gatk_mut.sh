@@ -6,7 +6,7 @@ numbers=( 'SRR7829660' 'SRR7829678' 'SRR7829664' 'SRR7829675' 'SRR7829663' 'SRR7
 
 i=0
 j=0
-until [ ! $i -lt 8 ]
+until [ ! $i -lt 9 ]
 do
 
 echo "patient $i is ${numbers[$j]} "
