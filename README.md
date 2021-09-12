@@ -102,9 +102,11 @@ Then we need filter the false positives:
     $ bash gatk_filter.sh
     
   **part 2. analyzing of pathogenic genes in Mendelian single-gene inherited disease**
+  
   **part 3. analyzing the low-frequence mutations in population**
   
-  **step 9: **
+  **step 9: Annotate genetic variants**
+  
 
 
 
