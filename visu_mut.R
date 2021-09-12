@@ -9,24 +9,26 @@ setwd(dirname(rstudioapi::getActiveDocumentContext()$path))
 ann_array = list.files(getwd())
 ann_array
 
-var.annovar.maf <- annovarToMaf(annovar = "merge.txt",
+var.annovar.maf <- annovarToMaf(annovar = "merge_ge.txt",
                                 refBuild = "hg38",
                                 tsbCol = "Tumor_Sample_Barcode",
                                 sep = "\t")
-write.table(var.annovar.maf,file="var_annovar.maf",quote= F,sep="\t",row.names=F)
+write.table(var.annovar.maf,file="var_annovar_ge.maf",quote= F,sep="\t",row.names=F)
 
-var_maf = read.maf(maf ="var_annovar.maf")
+var_maf = read.maf(maf ="var_annovar_ge.maf")
 sam_sum = getSampleSummary(var_maf)
-write.table(sam_sum,file="sample_summary.maf",quote= F,sep="\t")
+write.table(sam_sum,file="sample_summary_ge.maf",quote= F,sep="\t")
 getGeneSummary(var_maf)
 
-pdf("maf_sum.pdf",width = 7,height = 4)
+pdf("maf_sum_ge.pdf",width = 8,height = 5.7)
 plotmafSummary(maf = var_maf, rmOutlier = TRUE, addStat = 'median')
 dev.off()
 
-oncoplot(maf = var_maf, top = 30, fontSize = 12 ,showTumorSampleBarcodes = F )
+pdf("maf_onc_ge.pdf",width = 9,height = 6.5)
+oncoplot(maf = var_maf, top = 30 )
+dev.off()
 laml.titv = titv(maf = var_maf, plot = FALSE, useSyn = TRUE)
 plotTiTv(res = laml.titv)
-pdf("mut_int.pdf",width = 7,height = 4)
+pdf("mut_int_ge.pdf",width = 8,height = 5.7)
 somaticInteractions(maf = var_maf, top = 25, pvalue = c(0.05, 0.1))
 dev.off()
