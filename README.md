@@ -5,8 +5,9 @@ softwares available to conda:
     
     conda install sra-tools fastqc multiqc fastx_toolkit trim-galore bwa samtools snpeff bcftools qualimap
     
- softwares not available to conda:
- 
+ softwares not available to conda such as GATK:
+    
+    # GATK
     wget -c -t 0 https://github.com/broadinstitute/gatk/releases/download/4.2.2.0/gatk-4.2.2.0.zip
     unzip gatk-4.2.2.0.zip
     cd gatk-4.2.2.0
@@ -106,7 +107,16 @@ Then we need filter the false positives:
   **part 3. analyzing the low-frequence mutations in population**
   
   **step 9: Annotate genetic variants**
+  We use ANNOVAR to annotate variants. After downloading ANNOVAR, we can put it in the environment (.bashrc). Then we can use the scripts of ANNOVAR anywhere.
   
+    # for part 1
+    $ bash annovar_convert_anno.sh
 
+ **step 10: Visualize variants**
+ This step need run by R script. we use the *maftools* package.
+ 
+   # for part 1
+   $ Rscript visu_mut.R
+ 
 
 
