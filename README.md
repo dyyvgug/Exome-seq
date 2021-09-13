@@ -113,6 +113,7 @@ Then we need filter the false positives:
     $ bash annovar_convert_anno.sh
 
   **step 10: Visualize variants**
+  
   This step need run by R script. we use the *maftools* package.
  
     $ Rscript visu_mut.R
