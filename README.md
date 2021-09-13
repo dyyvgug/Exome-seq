@@ -107,6 +107,7 @@ Then we need filter the false positives:
   **part 3. analyzing the low-frequence mutations in population**
   
   **step 9: Annotate genetic variants**
+  
   We use ANNOVAR to annotate variants. After downloading ANNOVAR, we can put it in the environment (.bashrc). Then we can use the scripts of ANNOVAR anywhere.
   
     # for part 1
