@@ -115,7 +115,6 @@ Then we need filter the false positives:
  **step 10: Visualize variants**
  This step need run by R script. we use the *maftools* package.
  
-   # for part 1
    $ Rscript visu_mut.R
  
 
