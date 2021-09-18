@@ -49,18 +49,20 @@ softwares available to conda:
 **step 4:Download the genome file and annotation file for the corresponding specie**
   
   method one: find the corresponding genome in NCBI, copy the download link, and download it directly using the wget command.
-  E.g:download genome of *Drosophila_melanogaster*,and the annotation file is gff,the same download method.
+  E.g:download genome of *Drosophila melanogaster*,and the annotation file is gff, the same download method.
   
     $ wget -c -t 0 ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/001/215/GCF_000001215.4_Release_6_plus_ISO1_MT/GCF_000001215.4_Release_6_plus_ISO1_MT_genomic.fna.gz
     
   method two: download genome, annotation, and indexes from iGenomes(https://support.illumina.com/sequencing/sequencing_software/igenome.html).
   
 **step 5:Use the mapping tool to build index of the corresponding species genome**
+  
   E.g:Use BWA to build an index file for the human genome. If we download genome files from iGenomes, this step can be ommited.
   
     $ bwa index ./Homo_sapiens.fasta -p genome
     
 **step 6:Map to genome.**
+
 There are many different sequence alignment tools, such as STAR, hisat2, BWA, Tophat, bowtie2...but BWA is widely used in exome-seq mapping.
   
     $ bash bwa.sh
