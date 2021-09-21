@@ -45,6 +45,7 @@ softwares available to conda:
 
     $ bash SRA-QC.sh
 
+-------
 **step 3: Remove adapter and filter low-quality reads**
 
     $ bash clipper.sh
