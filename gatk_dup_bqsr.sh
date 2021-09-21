@@ -27,7 +27,7 @@ do
     
     gatk --java-options "-Xmx20G -Djava.io.tmpdir=./" ApplyBQSR \
 		-R /proj/y.dong/GATK/hg38/Homo_sapiens_assembly38.fasta \
-		-I ${item%.*}_dup_fixed_add.bam \
+		-I ${item%.*}_dup_fixed.bam \
 		-bqsr ${item%.*}_recal.table \
 		-O ${item%.*}_bqsr.bam \
 		2>>apply_bqsr_log.txt
