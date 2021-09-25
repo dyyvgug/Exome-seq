@@ -63,5 +63,5 @@ time $gatk ApplyVQSR \
     --tranches-file ./filter/trio_indels.tranches \
     --recal-file ./filter/trio_indels.recal \
     -mode INDEL \
-    -O ./filter/trio_indels_VQSR.vcf.gz \
+    -O ./filter/trio_snp_indel_VQSR.vcf.gz \
     2>>./filter/indel_apply_log.txt
