@@ -27,7 +27,7 @@ time $gatk VariantRecalibrator \
     --resource:dbsnp,known=true,training=false,truth=false,prior=6.0 $dbsnp \
     -an DP -an QD -an FS -an SOR -an ReadPosRankSum -an MQRankSum \
     -mode SNP \
-    -tranche 100.0 -tranche 95.0 -tranche 92.0 -tranche 90.0 -tranche 80.0 \
+    -tranche 100.0 -tranche 99.0 -tranche 99.0 -tranche 95.0 -tranche 90.0 \
     --rscript-file ./filter/trio_snps.plots.R \
     --tranches-file ./filter/trio_snps.tranches \
     -O ./filter/trio_snps.recal \
