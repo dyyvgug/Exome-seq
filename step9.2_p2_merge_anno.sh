@@ -1,6 +1,22 @@
 #!/bin/bash
 
+if [ ! -d ./rare ]
+then mkdir ./rare
+fi
 
-cut -f '1-10' *.txt|sed '1d'>>for_maf.txt   
+for item in $(ls *.avinput)
+do		
+		#rare variants
+		echo "annovar filter ${item%.*}"
+		annotate_variation.pl \
+		-thread 52 \
+		./${item%.*}.avinput \
+		-filter -dbtype gnomad_exome \
+		-buildver hg38 \
+		-out ./rare/${item%.*} \
+		/proj/y.dong/annovar/humandb \
+		-score_threshold 0.01 -reverse \
+		2>>anno_fil.log
 
-sed -i '1s/^/Chr\tStart\tEnd\tRef\tAlt\tFunc.refGene\tGene.refGene\tGeneDetail.refGene\tExonicFunc.refGene\tAAChange.refGene\tTumor_Sample_Barcode\n/' for_maf.txt
+done
+
