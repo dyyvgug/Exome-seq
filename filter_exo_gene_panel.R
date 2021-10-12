@@ -18,11 +18,18 @@ pass<-read.table(paste0(name2,".hg38_multianno.txt"),sep = "\t", header = T,quot
 vq_ex<-vq[grep("exonic",vq$Func.refGene),]
 pass_ex<-pass[grep("exonic",pass$Func.refGene),]
 
+vq_af<-read.table("trio_snp_indel_VQSR_rare_list.txt",sep = "\t", header = T,quote = "")
+vq_af_ex<-vq_af[grep("exonic",vq_af$Func.refGene),]
+pass_af<-read.table("trio_only_pass_rare_list.txt",sep = "\t", header = T,quote = "")
+pass_af_ex<-pass_af[grep("exonic",pass_af$Func.refGene),]
+
 names(gene)="Gene.refGene"
 vq_mer=semi_join(vq,gene,by="Gene.refGene")
 pass_mer=semi_join(pass,gene,by="Gene.refGene")
 vq_ex_mer=semi_join(vq_ex,gene,by="Gene.refGene")
 pass_ex_mer=semi_join(pass_ex,gene,by="Gene.refGene")
+vq_af_mer=semi_join(vq_af_ex,gene,by="Gene.refGene")
+pass_af_mer=semi_join(pass_af_ex,gene,by="Gene.refGene")
 
 
 pass<-pass[,-c(6:21)]
@@ -34,5 +41,8 @@ vq_ex_mer<-vq_ex_mer[,-c(6:21)]
 
 
 #write.table(pass,file = paste0(name1,"_rem.vcf"),quote= F,sep="\t",row.names=F,col.names = F)
-write.table(pass_ex_mer,file = "pass_ex_pan_rem.vcf",quote= F,sep="\t",row.names=F,col.names = F)
-write.table(vq_ex_mer,file = "vq_ex_pan_rem.vcf",quote= F,sep="\t",row.names=F,col.names = F)
+write.table(pass_ex_mer,file = "pass_ex_pan_rem.vcf",quote= F,sep="\t",row.names=F,col.names = T)
+write.table(vq_ex_mer,file = "vq_ex_pan_rem.vcf",quote= F,sep="\t",row.names=F,col.names = T)
+
+write.table(pass_af_mer,file = "pass_rare_ex_pan_rem.vcf",quote= F,sep="\t",row.names=F,col.names = T)
+write.table(vq_af_mer,file = "vq_rare_ex_pan_rem.vcf",quote= F,sep="\t",row.names=F,col.names = T)
