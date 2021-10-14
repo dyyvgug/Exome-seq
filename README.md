@@ -123,7 +123,7 @@ Then we need filter the false positives:
  Then we need filter, here I use the gatk VQSR. Using hapmap, omini,1000G,dbsnp database to train Gaussian mixture model, getting the log odds of being a true variant versus being false, then set the empirical VQSLOD cutoff to filter variants.
  
     $ bash step8.2_p2.2_gatk_men_filter.sh
-
+    $ bash step8.2_p2.3_gatk_men_filter_onlyPASS.sh  #extract only PASS label
   
   **part 3. analyzing the low-frequence mutations in population**
   
@@ -133,7 +133,13 @@ Then we need filter the false positives:
   We use ANNOVAR to annotate variants. After downloading ANNOVAR, we can put it in the environment (.bashrc). Then we can use the scripts of ANNOVAR anywhere.
   
     # for part 1
-    $ bash annovar_convert_anno.sh
+    $ bash step9.1_p1_annovar_convert_anno.sh
+    # Then merge all VCFs for obeserving
+    $ bash step9.2_p1_merge_anno.sh
+    
+    # for part 2
+    $ bash step9.1_p2_annovar_convert_anno.sh
+    $ bash step9.2_p2_merge_anno.sh
 
   -------
   **step 10: Visualize variants**
