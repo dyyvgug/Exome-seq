@@ -10,7 +10,7 @@ dbsnp=$gatk_bundle/dbsnp_146.hg38.vcf.gz
 indel=$gatk_bundle/Mills_and_1000G_gold_standard.indels.hg38.vcf.gz
 G1000=$gatk_bundle/1000G_phase1.snps.high_confidence.hg38.vcf.gz
 hapmap=$gatk_bundle/hapmap_3.3.hg38.vcf.gz
-omini=$gatk_bundle/1000G_omni2.5.hg38.vcf.gz
+omni=$gatk_bundle/1000G_omni2.5.hg38.vcf.gz
 mills=$gatk_bundle/Mills_and_1000G_gold_standard.indels.hg38.vcf.gz
 
 if [ ! -d ./filter ]
@@ -23,7 +23,7 @@ time $gatk VariantRecalibrator \
     -R $ref \
     -V ../cohort.vcf.gz \
     --resource:hapmap,known=false,training=true,truth=true,prior=15.0 $hapmap \
-    --resource:omini,known=false,training=true,truth=false,prior=12.0 $omini \
+    --resource:omini,known=false,training=true,truth=false,prior=12.0 $omni \
     --resource:1000G,known=false,training=true,truth=false,prior=10.0 $G1000 \
     --resource:dbsnp,known=true,training=false,truth=false,prior=2.0 $dbsnp \
     -an DP -an QD -an FS -an SOR -an ReadPosRankSum -an MQRankSum \
