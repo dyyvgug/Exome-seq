@@ -10,7 +10,10 @@ cat config |while read id
 do
 	echo "clipper_${id}"
 	arr=(${id})
-    fq1=${arr[0]}
-    fq2=${arr[1]}
+    	fq1=${arr[0]}
+    	fq2=${arr[1]}
 	trim_galore -q 33 --phred33 --length 20 -e 0.1 --stringency 3 --paired $fq1 $fq2 -o ../clipper_fastq/
 done
+
+rename 's/\.sra.*_1/_1/g' *
+rename 's/\.sra.*_2/_2/g' *
