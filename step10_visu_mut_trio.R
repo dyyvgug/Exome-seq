@@ -62,4 +62,19 @@ for (j in maf_array) {
   pdf(paste0(name,j,"_sum.pdf"),width = 9,height = 5.7)
   plotmafSummary(maf = var_maf, rmOutlier = TRUE, addStat = 'median')
   dev.off()
-  }
+}
+
+
+var.annovar.maf <- annovarToMaf(annovar = "vq_rare_ex_pan_rem.vcf",
+                                refBuild = "hg38",
+                                sep = "\t")
+write.table(var.annovar.maf,file="vq_rare_ex_pan_rem.maf",quote= F,sep="\t",row.names=F)
+
+var_maf = read.maf(maf ="vq_rare_ex_pan_rem.maf")
+sam_sum = getSampleSummary(var_maf)
+write.table(sam_sum,file="vq_rare_ex_pan_rem.maf",quote= F,sep="\t")
+getGeneSummary(var_maf)
+
+pdf("vq_rare_ex_pan_rem.pdf",width = 8,height = 5.7)
+plotmafSummary(maf = var_maf, rmOutlier = TRUE, addStat = 'median')
+dev.off()
