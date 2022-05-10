@@ -18,8 +18,8 @@ do
         -buildver hg38 \
         -out ./anno/${item%.*} \
         -remove \
-        -protocol refGene,clinvar_20200316,gnomad_exome \
-        -operation g,f,f \
+        -protocol refGene,clinvar_20200316 \
+        -operation g,g \
         -nastring . \
         -vcfinput
 done
