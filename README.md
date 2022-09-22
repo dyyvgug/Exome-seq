@@ -15,7 +15,12 @@ softwares available to conda:
     ./gatk
     echo 'export PATH="/home/students/y.dong/tool/gatk-4.2.2.0/:$PATH"' >> ~/.bashrc
     source ~/.bashrc
------    
+-----
+STEP 1 - 9 (from SRA files to VCF files in Mendelian single-gene inherited disease):
+
+    $bash WES_pipeline.sh
+    
+-----
 **step 1: Download SRA files, high-throughput raw sequencing data.**
   method one:using the prefetch function of the SRA-tools.
     E.g:download SRR3589957-SRR3589965(RNAseq of *Homo sapiens* 293 cell line)
