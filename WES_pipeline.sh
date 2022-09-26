@@ -1,12 +1,18 @@
 #!/bin/bash
 
-# if the raw sequence is SRA
+# if the raw files are SRA
 for item in $(ls *.sra)
 do
 	echo "sra_${item%.*}"
 
    fastq-dump --gzip --split-3 -O ./fastq/ -A ${item%.*}.sra
 done
+
+<<'COMMENT'
+# if the raw files are fastq.gz
+mkdir ./fastq/
+mv *.gz ./fastq/
+COMMENT
 
 # QC
 cd ./fastq/
