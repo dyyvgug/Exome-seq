@@ -5,8 +5,12 @@
 #SBATCH -o wes.out
 #SBATCH -e wes.err
 
-
+mkdir ./fastq/
+mv *.gz ./fastq/
 cd ./fastq/
+fastqc ./*
+multiqc ./*
+
 
 mkdir clipper_fastq
 
