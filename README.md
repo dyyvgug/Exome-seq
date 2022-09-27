@@ -19,7 +19,9 @@ softwares available to conda:
 STEP 1 - 9 (from SRA files to VCF files in Mendelian single-gene inherited disease):
 
     $bash WES_pipeline.sh
-    
+    # If the raw files are fastq.gz files with slurm
+    $sbatch WES_pipeline_RAWfastq.sh
+  
 -----
 **step 1: Download SRA files, high-throughput raw sequencing data.**
   method one:using the prefetch function of the SRA-tools.
