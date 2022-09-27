@@ -11,6 +11,11 @@ cd ./fastq/
 fastqc ./*
 multiqc ./*
 
+for item in $(ls *.fastq.gz)
+do
+        echo "generate ${item%.fastq.*}"
+        touch ${item%.fastq.*}.sra
+done
 
 mkdir clipper_fastq
 
@@ -51,6 +56,7 @@ do
 	samtools sort -@ 60 -o ${item%.*}.bam ${item%.*}.sam
 	samtools flagstat ${item%.*}.bam > ./stati/${item%.*}.bam.flag
 
+# need lots of time
 #	echo "coverage_${item%.*}"
 #			
 #	bedtools genomecov -d -ibam ${item%.*}.bam -g /proj/y.dong/GATK/hg38/Homo_sapiens_assembly38.fasta > ./stati/${item%.*}_cov.txt
