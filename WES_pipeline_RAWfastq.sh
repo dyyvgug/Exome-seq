@@ -211,13 +211,12 @@ time $gatk ApplyVQSR \
     -O trio_snp_indel_VQSR.vcf.gz \
     2>>indel_apply.log
 
-rename 's/\.gz//' *
+gunzip *.gz
 
 mkdir only_pass
-cd only_pass
 cat ./trio_snp_indel_VQSR.vcf | perl -alne '{if(/^#/){print}else{next unless $F[6] eq "PASS";next if $F[0] =~/_/;print } }' \
                 > ./only_pass/trio_only_pass.vcf
-
+cd only_pass
 
 if [ ! -d ./anno ]
 then mkdir ./anno
