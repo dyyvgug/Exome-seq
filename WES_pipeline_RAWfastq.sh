@@ -1,5 +1,5 @@
 #!/bin/bash
-#SBATCH -J ES2
+#SBATCH -J ES
 #SBATCH -N 3
 #SBATCH --ntasks-per-node=20
 #SBATCH -o wes.out
@@ -210,6 +210,8 @@ time $gatk ApplyVQSR \
     -mode INDEL \
     -O trio_snp_indel_VQSR.vcf.gz \
     2>>indel_apply.log
+
+rename 's/\.gz//' *
 
 mkdir only_pass
 cd only_pass
