@@ -1,9 +1,10 @@
 #!/bin/bash
 #SBATCH -J ES
-#SBATCH -N 3
-#SBATCH --ntasks-per-node=20
+#SBATCH -N 2
+#SBATCH --ntasks-per-node=30
 #SBATCH -o wes.out
 #SBATCH -e wes.err
+#SBATCH --mem=20G
 
 mkdir ./fastq/
 mv *.gz ./fastq/
@@ -248,7 +249,7 @@ do
 		#rare variants
 		echo "annovar filter rare ${item%.*}"
 		annotate_variation.pl \
-		-thread 52 \
+		-thread 60 \
 		./${item%.*}.avinput \
 		-filter -dbtype gnomad_exome \
 		-buildver hg38 \
@@ -260,7 +261,7 @@ do
 		#frequent variants
 		echo "annovar filter frequent ${item%.*}"
 		annotate_variation.pl \
-		-thread 52 \
+		-thread 60 \
 		./${item%.*}.avinput \
 		-filter -dbtype gnomad_exome \
 		-buildver hg38 \
@@ -303,7 +304,7 @@ do
 		#rare variants
 		echo "annovar filter rare ${item%.*}"
 		annotate_variation.pl \
-		-thread 52 \
+		-thread 60 \
 		./${item%.*}.avinput \
 		-filter -dbtype gnomad_exome \
 		-buildver hg38 \
@@ -315,7 +316,7 @@ do
 		#frequent variants
 		echo "annovar filter frequent ${item%.*}"
 		annotate_variation.pl \
-		-thread 52 \
+		-thread 60 \
 		./${item%.*}.avinput \
 		-filter -dbtype gnomad_exome \
 		-buildver hg38 \
