@@ -109,7 +109,7 @@ ref=/proj/y.dong/GATK/hg38/Homo_sapiens_assembly38.fasta
 for item in $(ls *.sam)
 do
 	echo "HC_${item%.*}" 
-	# use HaplotypeCaller to identify variance
+	# use HaplotypeCaller to identify variants
 		gatk --java-options "-Xmx20G -Djava.io.tmpdir=./" HaplotypeCaller \
 		-ERC GVCF \
 		--native-pair-hmm-threads 60 \
