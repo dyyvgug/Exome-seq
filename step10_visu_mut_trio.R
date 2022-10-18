@@ -76,10 +76,11 @@ name1="trio_snp_indel_VQSR"
 name2="trio_only_pass"
 
 gene<-read.table("kidney_gene_panel_only_name.txt",sep = "\t", header = F,quote = "")
-#vq<-read.table(paste0("../anno/",name1,".hg38_multianno.txt"),sep = '\t',header = T,quote = "")
+vq<-read.table(paste0("../anno/",name1,".refGene.variant_function"),sep = '\t',header = T,quote = "")
 pass<-read.table(paste0("./anno/",name2,".hg38_multianno.txt"),sep = "\t", header = T,quote = "")
 # keep only exonic, filter intronic,UTR3
 pass_ex<-pass[grep("exonic",pass$Func.refGene),]
+vq_ex <- vq[grep("exonic",pass$Func.refGene),]
 pass_af<-read.table("trio_only_pass_rare_list.txt",sep = "\t", header = T,quote = "")
 pass_af_ex<-pass_af[grep("exonic",pass_af$Func.refGene),]
 
