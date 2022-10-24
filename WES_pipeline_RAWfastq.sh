@@ -12,10 +12,10 @@ cd ./fastq/
 fastqc ./*
 multiqc ./*
 
-for item in $(ls *.fastq.gz)
+for item in $(ls *_R1.fastq.gz)
 do
-        echo "generate ${item%.fastq.*}"
-        touch ${item%.fastq.*}.sra
+        echo "generate ${item%_R1.fastq.*}"
+        touch ${item%_R1.fastq.*}.sra
 done
 
 mkdir clipper_fastq
