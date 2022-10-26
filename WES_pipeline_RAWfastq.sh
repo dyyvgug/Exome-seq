@@ -153,6 +153,7 @@ fi
 if [ $k -eq 1 ];then
 	echo "only one sample"
 	mv "${gvcf_list[0]}" cohort.g.vcf.gz
+	mv "${gvcf_list[0]}".tbi cohort.g.vcf.gz.tbi
 fi
 	
 gatk --java-options "-Xmx20G -Djava.io.tmpdir=./" GenotypeGVCFs \
