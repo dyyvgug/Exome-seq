@@ -121,21 +121,39 @@ do
 done
 
 cd mutation
-# combine trio
+# combine trio or not
 j=0
 for i in $(ls *.gz)
 do
-	gvcf_list[j]=$i
-	j=`expr $j + 1`
+        gvcf_list[j]=$i
+        j=`expr $j + 1`
 done
+echo ${#gvcf_list[*]}
+k=${#gvcf_list[*]}
 
-gatk --java-options "-Xmx20G -Djava.io.tmpdir=./" CombineGVCFs \
-	-R $ref \
-	-V ./${gvcf_list[0]} \
-	-V ./${gvcf_list[1]} \
-	-V ./${gvcf_list[2]} \
-	-O ./cohort.g.vcf.gz \
-	2>>./combine_log.txt
+if [ $k -eq 3 ];then
+	echo "three samples"
+	gatk --java-options "-Xmx20G -Djava.io.tmpdir=./" CombineGVCFs \
+		-R $ref \
+		-V ./${gvcf_list[0]} \
+		-V ./${gvcf_list[1]} \
+		-V ./${gvcf_list[2]} \
+		-O ./cohort.g.vcf.gz \
+		2>>./combine_log.txt
+fi
+if [ $k -eq 2 ];then
+	echo "two samples"
+	gatk --java-options "-Xmx20G -Djava.io.tmpdir=./" CombineGVCFs \
+		-R $ref \
+		-V ./${gvcf_list[0]} \
+		-V ./${gvcf_list[1]} \
+		-O ./cohort.g.vcf.gz \
+		2>>./combine_log.txt
+fi
+if [ $k -eq 1 ];then
+	echo "only one sample"
+	mv "${gvcf_list[0]}" cohort.g.vcf.gz
+fi
 	
 gatk --java-options "-Xmx20G -Djava.io.tmpdir=./" GenotypeGVCFs \
 	-R $ref \
