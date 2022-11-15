@@ -259,8 +259,8 @@ do
         -remove \
         -protocol refGene,cytoBand,exac03,clinvar_20200316 \
         -operation gx,r,f,f \
-        -nastring . \
-        -vcfinput
+        -nastring NA \
+	-csvout
 done
 
 for item in $(ls *.avinput)
