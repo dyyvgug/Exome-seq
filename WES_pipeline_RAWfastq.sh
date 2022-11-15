@@ -257,8 +257,8 @@ do
         -buildver hg38 \
         -out ./anno/${item%.*} \
         -remove \
-        -protocol refGene,clinvar_20200316 \
-        -operation g,g \
+        -protocol refGene,cytoBand,exac03,clinvar_20200316 \
+        -operation gx,r,f,f \
         -nastring . \
         -vcfinput
 done
