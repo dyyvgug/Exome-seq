@@ -258,9 +258,10 @@ do
         -out ./anno/${item%.*} \
         -remove \
         -protocol refGene,cytoBand,exac03,clinvar_20200316 \
-        -operation gx,r,f,f \
-        -nastring NA \
-	-csvout
+        -operation g,r,f,f \
+        -nastring . \
+	-vcfinput \
+        -polish
 done
 
 for item in $(ls *.avinput)
@@ -312,10 +313,11 @@ do
         -buildver hg38 \
         -out ./anno/${item%.*} \
         -remove \
-        -protocol refGene,clinvar_20200316 \
-        -operation g,g \
+        -protocol refGene,cytoBand,exac03,clinvar_20200316 \
+        -operation g,r,f,f \
         -nastring . \
-        -vcfinput
+	-vcfinput \
+        -polish
 done
 
 for item in $(ls *.avinput)
