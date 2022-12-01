@@ -1,6 +1,6 @@
 #=======================================================================
 # 2021-9-10.Modify:2022-11-24.
-# Author:Dong Yingying.Visually describe mutation of many trios
+# Author:Yingying Dong. Visually describe mutation of many trios
 #=======================================================================
 if (!require("BiocManager", quietly = TRUE))
   install.packages("BiocManager")
