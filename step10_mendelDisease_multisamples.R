@@ -1,6 +1,6 @@
 #=======================================================================
 # 2021-9-10.Modify:2022-11-24.
-# Author:Yingying Dong. Visually describe mutation of many trios
+# Author:Dong Yingying.Visually describe mutation of many trios
 #=======================================================================
 if (!require("BiocManager", quietly = TRUE))
   install.packages("BiocManager")
@@ -20,6 +20,8 @@ gene<-read.table("/proj/y.dong/di_pc/kidney/exome-seq/kidney_gene_panel_only_nam
 dirNa = file("dirName.txt","r")
 while(T){
   name = readLines(dirNa,n=1)
+  name = "first"
+  name = "second"
   if(length(name) == 0){
     break
   }
@@ -98,9 +100,9 @@ while(T){
                                     sep = "\t")
     write.table(var.annovar.maf,file=paste0(name,"_rare_ex_pan_rem.maf"),quote= F,sep="\t",row.names=F)
     
-    var_maf = read.maf(maf =paste0(name,"_rare_ex_pan_rem.maf"))
+    var_maf = read.maf(maf = paste0(name,"_rare_ex_pan_rem.maf"))
     sam_sum = getSampleSummary(var_maf)
-    write.table(sam_sum,file=paste0(name,"_rare_ex_pan_rem.maf"),quote= F,sep="\t")
+    write.table(sam_sum,file=paste0(name,"_rare_ex_pan_rem_sum.maf"),quote= F,sep="\t")
     getGeneSummary(var_maf)
     
     pdf(paste0(name,"_rare_ex_pan_rem.pdf"),width = 8,height = 5.7)
@@ -109,3 +111,33 @@ while(T){
   }
 }
 close(dirNa)
+
+getwd()
+#all_maf <- read.maf(maf = "allSample_rare_list.maf")
+mafs = list.files(path = "./", pattern = "*rare_list.maf$", full.names = TRUE)
+print(mafs)
+x = merge_mafs(mafs = mafs)
+all_sum = getSampleSummary(x)
+write.mafSummary(maf = x, basename = 'all_rare')
+write.table(all_sum,file=paste0("all_rare_summary.maf"),quote= F,sep="\t")
+getGeneSummary(x)
+
+pdf("all_rare_summary.pdf",width = 8,height = 5.7)
+plotmafSummary(maf = x, rmOutlier = TRUE, addStat = 'median')
+dev.off()
+
+ex_ge_mafs = list.files(path = "./", pattern = "*_rare_ex_pan_rem.maf$", full.names = TRUE)
+print(ex_ge_mafs)
+y = merge_mafs(mafs = ex_ge_mafs)
+write.mafSummary(maf = x, basename = 'all_rare_ex_ge')
+getGeneSummary(y)
+
+pdf("all_ex_ge_rare_summary.pdf",width = 8,height = 5.7)
+plotmafSummary(maf = y, rmOutlier = TRUE, addStat = 'median')
+dev.off()
+
+all_sum_ge = read.table("all_rare_ex_ge_maftools.maf",header = T,sep = '\t',fill = T)
+scorce = data.frame(all_sum_ge$Chromosome,all_sum_ge$Start_Position,all_sum_ge$Reference_Allele,all_sum_ge$Tumor_Seq_Allele2)
+#scorce = scorce[-c(22668,46478,49273,25204,46822),]
+scorce$all_sum_ge.Chromosome = sub("chr","",scorce$all_sum_ge.Chromosome)
+write.table(scorce,file = "all_rare_genePanel_pre_score.txt",sep = ' ',row.names = F,col.names = F,quote = F)
