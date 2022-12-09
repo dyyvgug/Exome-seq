@@ -129,12 +129,18 @@ dev.off()
 ex_ge_mafs = list.files(path = "./", pattern = "*_rare_ex_pan_rem.maf$", full.names = TRUE)
 print(ex_ge_mafs)
 y = merge_mafs(mafs = ex_ge_mafs)
-write.mafSummary(maf = x, basename = 'all_rare_ex_ge')
+write.mafSummary(maf = y, basename = 'all_rare_ex_ge')
 getGeneSummary(y)
 
 pdf("all_ex_ge_rare_summary.pdf",width = 8,height = 5.7)
 plotmafSummary(maf = y, rmOutlier = TRUE, addStat = 'median')
 dev.off()
+
+all_rare = read.table("all_rare_maftools.maf",header = T,sep = '\t',fill = T)
+sco = data.frame(all_rare$Chromosome,all_rare$Start_Position,all_rare$Reference_Allele,all_rare$Tumor_Seq_Allele2)
+sco = sco[-c(22668,46478,49273,25204,46822),]
+sco$all_rare.Chromosome = sub("chr","",sco$all_rare.Chromosome)
+write.table(sco,file = "all_rare_forPre_score.txt",sep = " ",row.names = F,col.names = F,quote = F)
 
 all_sum_ge = read.table("all_rare_ex_ge_maftools.maf",header = T,sep = '\t',fill = T)
 scorce = data.frame(all_sum_ge$Chromosome,all_sum_ge$Start_Position,all_sum_ge$Reference_Allele,all_sum_ge$Tumor_Seq_Allele2)
