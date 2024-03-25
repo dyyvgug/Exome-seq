@@ -16,7 +16,7 @@ softwares available to conda:
     echo 'export PATH="/home/students/y.dong/tool/gatk-4.2.2.0/:$PATH"' >> ~/.bashrc
     source ~/.bashrc
 -----
-STEP 1 - 9 (from SRA files to VCF files in Mendelian single-gene inherited disease):
+STEP 1 - 9 (from NCBI SRA files to VCF files in Mendelian single-gene inherited disease):
 
     $bash WES_pipeline.sh
     # If the raw files are fastq.gz files with slurm
